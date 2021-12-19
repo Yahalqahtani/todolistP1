@@ -4,7 +4,7 @@ const app = express();
 const db = require("./db");
 
 // port var
-const port = 4000;
+const PORT = 4000;
 
 // get post ... methods
 

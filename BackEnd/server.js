@@ -43,7 +43,7 @@ app.post('/tasks', (req, res) => {
 	});
 });
 
-//!   delete
+//!   delete by id
 app.delete('/tasks/:id', (req, res) => {
 	// console.log(req.params);
 	Todo.deleteOne({ _id: req.params.id }, (err, deleteObj) => {
@@ -61,7 +61,25 @@ app.delete('/tasks/:id', (req, res) => {
 	});
 });
 
-//!   put
+//! delete all tasks completed
+app.delete('/tasks', (req, res) => {
+	// console.log(req.params);
+	Todo.deleteMany({ isComplet: true }, (err, deleteObj) => {
+		if (err) {
+			console.log('ERROR', err);
+			res.status(500).json('there is a problem in DB');
+		} else {
+			// console.log(deleteObj)
+			if (deleteObj.deletedCount === 0) {
+				res.status(404).json('Tasks completed Not Found');
+			} else {
+				res.status(200).json('Success Delete Completed Tasks ');
+			}
+		}
+	});
+});
+
+//!   put update by id
 app.put('/tasks/:id', (req, res) => {
 	// console.log(req.params);
 	Todo.updateOne({ _id: req.params.id }, { title: req.body.newTitle }, (err, updateObj) => {
@@ -75,6 +93,19 @@ app.put('/tasks/:id', (req, res) => {
 			} else {
 				res.status(200).json('Success Update one user');
 			}
+		}
+	});
+});
+
+//! put state by id
+
+app.put('/tasks/:id/:isCopmplet', (req, res) => {
+	// console.log(req.params);
+	Todo.updateOne({ _id: req.params.id }, { isComplet: req.params.isCopmplet }, (err, updateObj) => {
+		if (err) {
+			res.status(400).json(err);
+		} else {
+			updateObj.modifiedCount === 1 ? res.status(200).json('Updated') : res.status(404).json(err);
 		}
 	});
 });

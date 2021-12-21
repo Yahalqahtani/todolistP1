@@ -17,8 +17,12 @@
   },
   "homepage": "https://github.com/ya7yaq/todolistP1#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2",
     "mongoose": "^6.1.2",
     "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "webpack-node-externals": "^3.0.0"
   }
 }

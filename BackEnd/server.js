@@ -3,9 +3,12 @@ const express = require('express');
 const res = require('express/lib/response');
 const app = express();
 const db = require('./db');
+const cors = require('cors');
 
 //middle Ware to read body
 app.use(express.json());
+// to connect between servers local
+app.use(cors());
 
 // import model
 const Todo = require('./Model/ToDo');
@@ -27,7 +30,6 @@ app.get('/tasks', (req, res) => {
 			console.log('ERROR: ', err);
 		} else {
 			res.json(data);
-			console.log('ddd', data);
 		}
 	});
 });

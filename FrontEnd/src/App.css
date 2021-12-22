@@ -1,20 +1,157 @@
 .App {
-  text-align: center;
-  margin: auto;
-  width:600px;
+ 
+  height: 350px;
+  border-radius: 10px;
+  right: 37%;
+  top: 50px;
+  width:320px;
+  padding: 12px;
+  border: none;
+  padding: 10px;
+  background-color: rgb(221, 221, 221);
+  position: absolute;
+  
    
 }
-.Todo{
-  color: blueviolet;
-  border: crimson 0.5px ridge;
-  margin: 6px;
+body{
+  background-color: rgb(18, 95, 72);
+  position: relative;
 }
-button{
+
+.inputTask{
+  
   padding: 10px;
-  width: 120px;
+  border-radius: 6px;
+  width: 240px;
+  right: 8px;
+  position: absolute;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  height: 18px;
+  font-size: 20px;
+    
 }
+.inputTask:focus{
+  border: none;
+}
+
+
+.btnaddiv{
+
+ position: relative;
+ right: 0px;
+ 
+ top: 365px;
+}
+.btnAdd{
+ 
+  width: 40px;
+  height: 38px;
+  border-radius: 6px;
+    
+  right: 272px;
+ 
+  color: white;
+  background-color: rgb(38, 185, 99);
+  border: none;
+  font-size: 30px;
+  position: absolute;
+  
+  
+}
+
+
+.x{
+   
+  left: 3px;
+  border-radius: 100%;
+  border: hidden;
+  color: red;
+  background-color: transparent;
+  
+  position: absolute;
+  font-size: 18px;
+ 
+  
+  
+}
+.x:hover{
+ 
+ font-size: 22px;
+  
+}
+.check{
+ 
+  /* background-color: black; */
+  /* margin: 10px; */
+}
+.Todo{
+  color: rgb(32, 32, 32);
+  border-radius: 6px;
+  background-color: rgb(253, 253, 253);
+  border: none;
+  margin: 6px ;
+  padding: 4px;
+  font-size: 20px;
+  position: relative;
+  
+
+  
+ 
+}
+
+
+input[type='checkbox']{
+  width: 16px ;
+  height: 16px ;
+   
+  line-height:16px;
+  font-size: 18px;
+ position: relative;
+ 
+  appearance: none;
+  outline: 1px solid rgb(151, 150, 150);
+  border-radius: 100%;
+  box-shadow: none;
+  
+ 
+
+  background: rgb(250, 248, 248);
+}
+
+input[type='checkbox']:checked:after {
+  content: '✔';
+  font-size: 18px;
+  
+ 
+  position: absolute;
+   
+  color: rgb(38, 185, 99);
+}
+
+
+
+.Todo:hover{
+  background-color: rgb(209, 206, 206);
+  
+  
+
+
+}
+
 .title{
-  font-size: 25px;
-  font-weight:bold;
-  font-family:Times
+  right: 500px;
+  padding-top: 1px;
+  
+  font-weight: bolder;
+  background-color: rgb(17, 63, 46);
+  color: rgb(224, 224, 224);
+  width: 338px;
+  height: 32px;
+  border-radius: 5px;
+  top: 9px;
+  font-size: 24px;
+  position:absolute;
+ text-align: center;
+  
 }

@@ -90,10 +90,10 @@ app.put('/tasks/:id', (req, res) => {
 			res.status(500).json('there is a problem in DB');
 		} else {
 			// console.log(updateObj)
-			if (updateObj.matchedCount === 0) {
-				res.status(404).json('User Not Found');
-			} else {
+			if (updateObj.modifiedCount === 1) {
 				res.status(200).json('Success Update one user');
+			} else {
+				res.status(404).json('User Not Found');
 			}
 		}
 	});
@@ -101,9 +101,9 @@ app.put('/tasks/:id', (req, res) => {
 
 //! put state by id
 
-app.put('/tasks/:id/:isCopmplet', (req, res) => {
+app.put('/tasks/:id/:isCopmlet', (req, res) => {
 	// console.log(req.params);
-	Todo.updateOne({ _id: req.params.id }, { isComplet: req.params.isCopmplet }, (err, updateObj) => {
+	Todo.updateOne({ _id: req.params.id }, { isComplet: req.params.isCopmlet }, (err, updateObj) => {
 		if (err) {
 			res.status(400).json(err);
 		} else {

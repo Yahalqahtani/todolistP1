@@ -5,6 +5,7 @@ const app = express();
 const db = require('./db');
 const cors = require('cors');
 
+const User = require('./Model/User');
 //middle Ware to read body
 app.use(express.json());
 // to connect between servers local
@@ -125,6 +126,40 @@ app.get('/filter', (req, res) => {
 	});
 });
 
+//* End point for make user User Model
+app.post('/users/register', (req, res) => {
+	User.create(req.body, (err, newUser) => {
+		if (err) {
+			console.log('ERROR: ', err);
+			res.status(400).json({ message: 'this Email taken' });
+		} else {
+			res.status(201).json({ message: 'User created successfully' });
+		}
+	});
+});
+
+//* End point for Login
+app.post('/users/login', (req, res) => {
+	User.find({ Email: req.body.Email }, (err, arrUserFound) => {
+		if (err) {
+			console.log('ERROR: ', err);
+		} else {
+			if (arrUserFound.length === 1) {
+				//email founded
+				if (req.body.password === arrUserFound[0].password) {
+					// check on password if correct
+					res.status(200).json('Welcome ' + arrUserFound[0].username);
+				} else {
+					//password wrong
+					res.status(404).json({ message: 'Password Wrong' });
+				}
+			} else if (arrUserFound.length === 0) {
+				//email founded
+				res.status(404).json({ message: 'Email not register' });
+			}
+		}
+	});
+});
 //!   app listen
 
 app.listen(PORT, () => {

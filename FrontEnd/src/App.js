@@ -3,6 +3,7 @@ import axios from 'axios'
 import Todo from './components/Todo'
 import "./App.css"
 import AddDelete from './components/AddDelete'
+import Register from './components/Register'
 
 
 
@@ -123,6 +124,9 @@ export default function App() {
  <button onClick={()=>{
    filterData(false)
  }}>Get Task Not Done</button>
+
+ <br/>
+ <Register/>
       
  <div className="App">
        <AddDelete createtask={PostNewTask}/>

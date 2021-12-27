@@ -5,11 +5,14 @@ import "./App.css"
 import AddDelete from './components/AddDelete'
 import Register from './components/Register'
 import Login from './components/Login'
+import { Routes, Route, Link } from "react-router-dom";
 
 
 
 export default function App() {
   const [tasks, settasks] = useState([])
+  const [isLogedin, setisLogedin] = useState(false)
+  const [userName, setuserName] = useState("")
 
   useEffect(() => {
     GetData()
@@ -112,28 +115,50 @@ export default function App() {
   return (
 
     <div>
- <div className='title'>قائمة المهام</div>
 
- <button onClick={DeleteDoneTasks}>Delete All Tasks</button>
+  
+ <nav>
 
- <button onClick={()=>{
-   filterData(true)
- }}>Get Tasks Done</button>
+   <Link to ="/Home">Home</Link> {"    |    "}
+   <Link to ="/Register">Register</Link>{"    |    "}
+   <Link to ="/Login">Login</Link> {"    |    "}
+ </nav>
 
+<Routes>
+        <Route path="/Home" element={
+          <div>
+          <div className='title'>قائمة المهام</div>
 
-
- <button onClick={()=>{
-   filterData(false)
- }}>Get Task Not Done</button>
-
- <br/>
- <Register/>
- <Login/>
-      
- <div className="App">
-       <AddDelete createtask={PostNewTask}/>
-      {MapOverTasks}
-    </div>
+          <button onClick={DeleteDoneTasks}>Delete All Tasks</button>
+         
+          <button onClick={()=>{
+            filterData(true)
+          }}>Get Tasks Done</button>
+         
+         
+         
+          <button onClick={()=>{
+            filterData(false)
+          }}>Get Task Not Done</button>
+         
+          <br/>
+          
+          
+               
+          <div className="App">
+                <AddDelete createtask={PostNewTask}/>
+               {MapOverTasks}
+             </div>
+             </div>
+        } />
+        <Route path="/Register" element={<Register/>} />
+        <Route path="/Login" element={<Login 
+        setisLogedin={setisLogedin}
+        setuserName={setuserName} />
+        }
+        />
+      </Routes>
+ 
 
     </div>
     

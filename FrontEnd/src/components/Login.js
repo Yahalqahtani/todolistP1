@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React,{useState} from 'react'
+import {Link} from "react-router-dom";
 
 
-export default function Login() {
+export default function Login(props) {
     const [Email, setEmail] = useState("")
     const [password, setPassword] = useState("")
    
@@ -16,6 +17,8 @@ export default function Login() {
      axios.post(`http://localhost:4000/users/login`,body).then((response)=>{
         
          console.log("Data::",response.data)
+         props.setisLogedin(true)
+         props.setuserName(response.data.username)
      })
      .catch((err)=>{
          console.log("err::",err)
@@ -29,10 +32,12 @@ export default function Login() {
             }}/> <br/>
             <input type="password" placeholder='Password'onChange={(e)=>{
                setPassword(e.target.value)
+               
             }}/> <br/>
            
             <input type="submit" value="Login"onClick={LoginFun}/>
             </form>
+            <Link to="/Register">عندك حساب؟</Link>
             
         </div>
     )

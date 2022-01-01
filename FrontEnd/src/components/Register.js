@@ -35,7 +35,7 @@ export default function Register() {
             <input type="text"  placeholder='Username'onChange={(e)=>{
                setUserName(e.target.value)
             }}/><br/>
-            <input type="submit" value="Register"onClick={RegisFun}/>
+            <input type="submit" className='btn btn-danger' value="Register"onClick={RegisFun}/>
             </form>
             <Link to="/Login">ماعندك حساب؟ </Link>
         </div>

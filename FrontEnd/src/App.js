@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import Todo from './components/Todo'
-import "./App.css"
+// import "./App.css"
 import AddDelete from './components/AddDelete'
 import Register from './components/Register'
 import Login from './components/Login'
@@ -112,6 +112,11 @@ export default function App() {
     })
  
    }
+
+const logoutFunc = ()=>{
+  setisLogedin(false)
+setuserName('')
+}   
   return (
 
     <div>
@@ -123,6 +128,12 @@ export default function App() {
    <Link to ="/Register">Register</Link>{"    |    "}
    <Link to ="/Login">Login</Link> {"    |    "}
  </nav>
+
+<button onClick={
+  {logoutFunc}
+
+}>Logout</button>
+
 
 <Routes>
         <Route path="/Home" element={

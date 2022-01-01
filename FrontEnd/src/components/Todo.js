@@ -6,7 +6,7 @@ export default function Todo(props) {
         
         <div className='Todo'>
 
-           <span className='spR'>
+           {/* <span className='spR'>
            <input className='check' type="checkbox"
              defaultChecked={isComplet}
              onClick={()=>{
@@ -24,8 +24,34 @@ export default function Todo(props) {
          <button className='x' onClick={()=>{
                 props.DeleteTask(_id)
             }}>X</button>
-             </span>   
-           
+             </span>    */}
+             
+             <ul class="list-group">
+
+             <li class="list-group-item list-group-item-warning"
+             
+             style={{ 
+                textDecoration : isComplet ?
+              "line-through rgb(38, 185, 99)" : "none" }}>
+                  
+
+                 {<button className='x' onClick={()=>{
+                props.DeleteTask(_id)
+            }}>X</button>}
+
+
+                 {title}</li>
+
+{
+    <input className='check' type="checkbox"
+    defaultChecked={isComplet}
+    onClick={()=>{
+        props.UpdateTask(_id,!isComplet)
+    }}
+   />
+}
+
+             </ul>
             
         </div>
     )

@@ -35,7 +35,7 @@ export default function Login(props) {
                
             }}/> <br/>
            
-            <input type="submit" value="Login"onClick={LoginFun}/>
+            <input type="submit" className='btn btn-danger' value="Login"onClick={LoginFun}/>
             </form>
             <Link to="/Register">عندك حساب؟</Link>
             
